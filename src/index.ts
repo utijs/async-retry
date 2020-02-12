@@ -18,11 +18,11 @@ export function retry(operation: AsyncOperation, options: Options) {
     const { retries, retryOn } = options;
     // TODO: options validations
 
-    return new Promise(function (resolve, reject) {
-      var wrappedOperation = function (attempt: number) {
+    return new Promise(function(resolve, reject) {
+      var wrappedOperation = function(attempt: number) {
         operation(args)
           .then(resolve)
-          .catch(function (error) {
+          .catch(function(error) {
             if (typeof retryOn === 'function') {
               if (retryOn(attempt + 1, error, null)) {
                 run(attempt);
@@ -43,5 +43,5 @@ export function retry(operation: AsyncOperation, options: Options) {
 
       wrappedOperation(0);
     });
-  }
+  };
 }

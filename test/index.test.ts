@@ -7,7 +7,7 @@ describe('retry', () => {
     const fn = async () => {
       calls += 1;
       throw new Error('Cancel');
-    }
+    };
 
     const retryOperation = retry(fn, { retries: 2 });
 
@@ -24,17 +24,17 @@ describe('retry', () => {
     const fn = async () => {
       calls += 1;
       throw new Error('Cancel');
-    }
+    };
 
     const retryOperation = retry(fn, {
       retries: 2,
-      retryOn: (attempt) => {
+      retryOn: attempt => {
         if (attempt > 1) {
           return false;
         }
 
         return true;
-      }
+      },
     });
 
     try {
@@ -43,5 +43,5 @@ describe('retry', () => {
       expect(error.message).toMatch('Cancel');
       expect(calls).toEqual(2);
     }
-  })
+  });
 });
