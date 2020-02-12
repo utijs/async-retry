@@ -25,7 +25,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "async-retry",
+  "name": "@utijs/async-retry",
   "author": "Alejandro",
   "module": "dist/async-retry.esm.js",
   "devDependencies": {
@@ -34,5 +34,17 @@
     "tsdx": "^0.12.3",
     "tslib": "^1.10.0",
     "typescript": "^3.7.5"
-  }
+  },
+  "description": "retry async functions",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utijs/async-retry.git"
+  },
+  "bugs": {
+    "url": "https://github.com/utijs/async-retry/issues"
+  },
+  "homepage": "https://github.com/utijs/async-retry#readme"
 }
