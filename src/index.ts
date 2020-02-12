@@ -7,6 +7,12 @@ interface Options {
 
 type AsyncOperation = (params: any) => Promise<any>;
 
+/**
+ * Retry async operation
+ *
+ * @param {AsyncOperation} operation
+ * @param {Options} options
+ */
 export function retry(operation: AsyncOperation, options: Options) {
   return function retryOperation(...args: any) {
     const { retries, retryOn } = options;
@@ -18,7 +24,7 @@ export function retry(operation: AsyncOperation, options: Options) {
           .then(resolve)
           .catch(function (error) {
             if (typeof retryOn === 'function') {
-              if (retryOn(attempt, error, null)) {
+              if (retryOn(attempt + 1, error, null)) {
                 run(attempt);
               } else {
                 reject(error);
