@@ -1,8 +1,8 @@
-interface Options {
+export interface Options {
   /** Number of retries */
   retries: number;
   /** Optional property, return false to cancel retry operation */
-  retryOn?: (attempt: number, error?: Error, response?: any) => boolean;
+  retryOn?: (attempt: number, error?: any, response?: any) => boolean;
 }
 
 type AsyncOperation = (params: any) => Promise<any>;
